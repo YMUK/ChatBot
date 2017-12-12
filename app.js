@@ -50,8 +50,8 @@ bot.dialog("firstTime", [
     }
 ]);
 
-
-bot.matches('how are you', function (session) {
-  session.send('im fine thank you.')
+bot.customAction({
+	matches: /^remind ([1-2]|)[0-9]:[0-9][0-9] (.+)$/i,
+  session.send('im fine thank you.');
 });
 
