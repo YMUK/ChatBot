@@ -22,6 +22,25 @@ server.post('/', connector.listen()); // 例：https://xxx.co.jp/
 //region ***** Bot セットアップ ***** /
 var bot = module.exports = new builder.UniversalBot(connector, [
     (session, args, next) => {
-        session.send(session.message.text);
+//        session.send(session.message.text);
+		if(session.userData.isKnown){
+		
+		session.send(session.userData.nake+"さん こんにちは！");
+		}else{
+		
+		session.beginDialog("firstTime");	
     }
+]);
+
+bot.dialog("firsttime",[
+	(session,args,next)=>{
+		session.send("はじめまして!");
+		builder.Prompts.text(session,"あなたの名前は何？");
+},
+	(session,results,next)=>{
+		session.userData.name=results.response;
+		session.userData.isKnown=true;
+		session.send(session.userData.name+"さん");
+		session.endCoversation("よろしくお願いします!!");
+	}
 ]);
