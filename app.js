@@ -57,7 +57,7 @@ bot.customAction({
 	}
 });
 
-bot.dialog("HOWOLD",[
+bot.dialog("COMPANY",[
 	(session, args, next) => {
 		builder.Prompts.text(session,'会社名は何ですか？');
 	},
@@ -66,10 +66,10 @@ bot.dialog("HOWOLD",[
 	 	session.userData.name = results.response;
 
 		session.send(session.userData.name + "ですね。");
-	},
-	 (session, results, next) => {
-	 	builder.Prompts.text(session.userData.name + "を知りたいですか？");
-	 
+//	},
+//	 (session, results, next) => {
+	 	builder.Prompts.text(session.userData.name + "の何を知りたいですか？");
+
 	 	session.userData.Where = result.response;
 	 	
 	 	if (session.userData.Where == "住所"){
