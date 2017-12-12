@@ -50,8 +50,8 @@ bot.dialog("firstTime", [
     }
 ]);
 
-bot.customAction({
-	matches: /^how are you$/i,
-  session.send('im fine thank you.')
-});
+//bot.customAction({
+//	matches: /^how are you$/i,
+//  session.send('im fine thank you.')
+//});
 
