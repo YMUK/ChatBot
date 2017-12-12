@@ -52,6 +52,6 @@ bot.dialog("firstTime", [
 
 bot.customAction({
 	matches: /^remind ([1-2]|)[0-9]:[0-9][0-9] (.+)$/i,
-  session.send('im fine thank you.');
+  session.send('im fine thank you.')
 });
 
