@@ -67,11 +67,11 @@ bot.dialog("COMPANY",[
 
 		session.send(session.userData.company + "ですね。");
 
-		session.send(session.userData.company + "の何を知りたいですか？");
+//		session.send(session.userData.company + "の何を知りたいですか？");
 //	},
 //	 (session, results, next) => {	
 	
-//		builder.Prompts.text(session.userData.company + "の何を知りたいですか？");
+		builder.Prompts.text(session.userData.company + "の何を知りたいですか？");
 
 	 	session.userData.Where = result.response;
 //	 }
