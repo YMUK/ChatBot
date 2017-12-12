@@ -67,9 +67,9 @@ bot.dialog("COMPANY",[
 
 		session.send(session.userData.company + "ですね。");
 
-//		session.send(session.userData.company + "の何を知りたいですか？");
-	},
-	 (session, results, next) => {	
+		session.send(session.userData.company + "の何を知りたいですか？");
+//	},
+//	 (session, results, next) => {	
 	
 		builder.Prompts.text(session.userData.company + "の何を知りたいですか？");
 
@@ -83,7 +83,7 @@ bot.dialog("COMPANY",[
 	 	{
 	 		session.send('URLを見て下さい');
 	 	}	
-	 //}
+	 }
 ]).triggerAction({
     matches: /^会社$/i,
 });
