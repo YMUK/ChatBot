@@ -50,15 +50,8 @@ bot.dialog("firstTime", [
     }
 ]);
 
-var slackBot = new builder.SlackBot(controller, bot);
-var dialog = new builder.CommandDialog();
 
-dialog.matches(['Hi', 'Hello', 'こんにちは'], function (session) {
-  session.send('こんにちは');
-});
-dialog.matches('how are you', function (session) {
+bot.matches('how are you', function (session) {
   session.send('im fine thank you.')
 });
-dialog.onDefault(function (session) {
-  session.send('もう1度言って下さい')
-});
+
