@@ -57,15 +57,17 @@ bot.customAction({
 	}
 });
 
-bot.customAction({
-	matches: /^子育て$/i,
-	onSelectAction: (session, args, next) => {
+bot.dialog("HOWOLD",[
+	(session, args, next) => {
 		builder.Prompts.text(session,'お子様はいくつですか？');
 	},
+	 (session, results, next) => {
+	 
+	 	session.userData.old = results.response;
 
-	(session, results, next) => {
-		session.userData.old = result.response;
-		session.userData.old = true;
 		session.send(session.userData.old + "歳ですね。");
 	}
+]).triggerAction({
+    matches: /^子育て$/i,
+    confirmPrompt: "ok?"
 });
