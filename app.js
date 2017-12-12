@@ -60,13 +60,12 @@ bot.customAction({
 bot.customAction({
 	matches: /^子育て$/i,
 	onSelectAction: (session, args, next) => {
-		session.send('お子様はいくつですか？');
-		
-		(session, results, next) => {
-				session.userData.id = result.response;
-				session.userData.id = true;
-				session.send(session.userData.id + "歳ですね。");
-		}
-		
+		builder.Prompts.text(session,'お子様はいくつですか？');
+	},
+
+	(session, results, next) => {
+		session.userData.old = result.response;
+		session.userData.old = true;
+		session.send(session.userData.old + "歳ですね。");
 	}
 });
