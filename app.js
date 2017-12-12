@@ -22,7 +22,7 @@ server.post('/', connector.listen()); // 例：https://xxx.co.jp/
 //region ***** Bot セットアップ ***** /
 var bot = module.exports = new builder.UniversalBot(connector, [
     (session, args, next) => {
-//        session.send(session.message.text);
+         session.send(session.message.text);
 
 //ユーザーと会話をするのが初めてなのかどうかを判定
 	if (session.userData.isKnown) {
