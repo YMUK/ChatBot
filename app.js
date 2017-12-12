@@ -54,6 +54,7 @@ bot.customAction({
 	matches: /^教えて$/i,
 	onSelectAction: (session, args, next) => {
 		session.send('何について教えて欲しいですか？');
+	}
 });
 
 bot.customAction({
@@ -62,5 +63,5 @@ bot.customAction({
 		session.send('お子様はいくつですか？');
 		session.userData.id = result.response;
 		session.send(session.userData.id + "歳ですね。");
-		
+	}
 });
