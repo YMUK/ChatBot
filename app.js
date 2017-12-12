@@ -83,5 +83,4 @@ bot.dialog("HOWOLD",[
 	 }
 ]).triggerAction({
     matches: /^会社$/i,
-    confirmPrompt: "ok?"
 });
