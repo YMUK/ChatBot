@@ -54,8 +54,8 @@ bot.customAction({
 	matches: /^子育て$/i,
 	onSelectAction: (session, args, next) => {
 		session.send('子育てについてですね。');
-		session.send('お子様はいくつですか？');
-		session.userData.old = result.response;
-		session.send(session.userData.old + "歳ですね。");
+//		session.send('お子様はいくつですか？');
+//		session.userData.old = result.response;
+//		session.send(session.userData.old + "歳ですね。");
 	}
 });
