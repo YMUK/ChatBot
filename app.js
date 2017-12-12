@@ -59,15 +59,32 @@ bot.customAction({
 
 bot.dialog("HOWOLD",[
 	(session, args, next) => {
-		builder.Prompts.text(session,'お子様はいくつですか？');
+		builder.Prompts.text(session,'会社名は何ですか？');
 	},
 	 (session, results, next) => {
 	 
-	 	session.userData.old = results.response;
+	 	session.userData.name = results.response;
 
-		session.send(session.userData.old + "歳ですね。");
+		session.send(session.userData.name + "ですね。");
 	}
+
+	 (session, results, next) => {
+	 	builder.Prompts.text(session.userData.name + "を知りたいですか？");
+	 
+	 	session.userData.Where = result.response;
+	 	
+	 	if (session.userData.Where == "住所"){
+	 	
+	 		session.send('来年、横浜に引っ越しします');
+	 	}
+	 	else
+	 	{
+	 		session.send('URLを見て下さい');
+	 	}
+	 	
+	 }
+	
 ]).triggerAction({
-    matches: /^子育て$/i,
+    matches: /^会社$/i,
     confirmPrompt: "ok?"
 });
