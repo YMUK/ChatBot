@@ -31,6 +31,7 @@ var bot = module.exports = new builder.UniversalBot(connector, [
 } else {
 // 初めてのユーザーなので、情報を提供してもらう    
 session.beginDialog("firstTime");
+    	}
     }
 ]);
 
