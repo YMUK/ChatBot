@@ -23,24 +23,29 @@ server.post('/', connector.listen()); // 例：https://xxx.co.jp/
 var bot = module.exports = new builder.UniversalBot(connector, [
     (session, args, next) => {
 //        session.send(session.message.text);
-		if(session.userData.isKnown){
-		
-		session.send(session.userData.nake+"さん こんにちは！");
-		}else{
-		
-		session.beginDialog("firstTime");	
+
+//ユーザーと会話をするのが初めてなのかどうかを判定
+	if (session.userData.isKnown) {
+	// すでに知っている場合は挨拶をする
+	session.send(session.userData.name + "さん　こんにちは！");
+} else {
+// 初めてのユーザーなので、情報を提供してもらう    
+session.beginDialog("firstTime");
     }
 ]);
 
-bot.dialog("firsttime",[
-	(session,args,next)=>{
-		session.send("はじめまして!");
-		builder.Prompts.text(session,"あなたの名前は何？");
-},
-	(session,results,next)=>{
-		session.userData.name=results.response;
-		session.userData.isKnown=true;
-		session.send(session.userData.name+"さん");
-		session.endCoversation("よろしくお願いします!!");
-	}
+// 初回ユーザーとの会話を定義
+bot.dialog("firstTime", [
+    (session, args, next) => {
+        session.send("はじめまして！");
+        builder.Prompts.text(session, "あなたの名前は何ですか？")
+    },
+    // ユーザーから期待する返事が来た時の処理を定義
+    (session, results, next) => {
+        session.userData.name = results.response;
+        session.userData.isKnown = true;
+        session.send(session.userData.name + "さん");
+        session.endConversation("よろしくお願いします！");
+    }
 ]);
+
