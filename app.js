@@ -22,7 +22,7 @@ server.post('/', connector.listen()); // 例：https://xxx.co.jp/
 //region ***** Bot セットアップ ***** /
 var bot = module.exports = new builder.UniversalBot(connector, [
     (session, args, next) => {
-         session.send(session.message.text);
+//         session.send(session.message.text);
 
 //ユーザーと会話をするのが初めてなのかどうかを判定
 	if (session.userData.isKnown) {
@@ -50,3 +50,15 @@ bot.dialog("firstTime", [
     }
 ]);
 
+var slackBot = new builder.SlackBot(controller, bot);
+var dialog = new builder.CommandDialog();
+
+dialog.matches(['Hi', 'Hello', 'こんにちは'], function (session) {
+  session.send('こんにちは');
+});
+dialog.matches('how are you', function (session) {
+  session.send('im fine thank you.')
+});
+dialog.onDefault(function (session) {
+  session.send('もう1度言って下さい')
+});
