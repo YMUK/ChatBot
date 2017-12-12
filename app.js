@@ -68,11 +68,13 @@ bot.dialog("COMPANY",[
 		session.send(session.userData.company + "ですね。");
 
 //		session.send(session.userData.company + "の何を知りたいですか？");
-
+	},
+	 (session, results, next) => {	
+	
 		builder.Prompts.text(session.userData.company + "の何を知りたいですか？");
 
 	 	session.userData.Where = result.response;
-	 	
+	 }
 	 	if (session.userData.Where == "住所"){
 	 	
 	 		session.send('来年、横浜に引っ越しします');
@@ -81,7 +83,7 @@ bot.dialog("COMPANY",[
 	 	{
 	 		session.send('URLを見て下さい');
 	 	}	
-	 }
+	 //}
 ]).triggerAction({
     matches: /^会社$/i,
 });
