@@ -71,10 +71,10 @@ bot.dialog("COMPANY",[
 //	},
 //	 (session, results, next) => {	
 	
-		builder.Prompts.text(session.userData.company + "の何を知りたいですか？");
+//		builder.Prompts.text(session.userData.company + "の何を知りたいですか？");
 
 	 	session.userData.Where = result.response;
-	 }
+//	 }
 	 	if (session.userData.Where == "住所"){
 	 	
 	 		session.send('来年、横浜に引っ越しします');
