@@ -66,8 +66,7 @@ bot.dialog("HOWOLD",[
 	 	session.userData.name = results.response;
 
 		session.send(session.userData.name + "ですね。");
-	}
-
+	},
 	 (session, results, next) => {
 	 	builder.Prompts.text(session.userData.name + "を知りたいですか？");
 	 
@@ -80,10 +79,8 @@ bot.dialog("HOWOLD",[
 	 	else
 	 	{
 	 		session.send('URLを見て下さい');
-	 	}
-	 	
+	 	}	
 	 }
-	
 ]).triggerAction({
     matches: /^会社$/i,
     confirmPrompt: "ok?"
